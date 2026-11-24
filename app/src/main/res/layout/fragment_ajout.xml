@@ -24,7 +24,7 @@
         android:id="@+id/iden"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Identifiant"
+        android:hint="CIN"
         android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
@@ -53,6 +53,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/mail" />
+    <EditText
+        android:id="@+id/genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Genre (M/F)"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/classe" />
     <Button
         android:id="@+id/boutonAjouter"
         android:layout_width="match_parent"
@@ -60,7 +71,6 @@
         android:text="Ajouter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/classe"/>
-
+        app:layout_constraintTop_toBottomOf="@id/genre"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

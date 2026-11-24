@@ -8,12 +8,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.isetr.tp5app.R
 import com.isetr.tp5app.databinding.FragmentProfileBinding
+import com.isetr.tp5app.repository.EtudiantRepository
 import com.isetr.tp5app.viewModel.EtudiantViewModel
+import com.isetr.tp5app.viewModel.EtudiantViewModelFactory
 
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
-    private val etudiantViewModel: EtudiantViewModel by activityViewModels()
+    private val etudiantViewModel: EtudiantViewModel by activityViewModels {
+        EtudiantViewModelFactory(EtudiantRepository())
+    }
     private val binding get() = _binding!!
 
     override fun onCreateView(

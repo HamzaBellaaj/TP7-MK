@@ -4,24 +4,26 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.isetr.tp5app.Model.Etudiant
+import com.isetr.tp5app.data.Etudiant
 import com.isetr.tp5app.R
 import com.isetr.tp5app.databinding.ItemEtudBinding
 
 class EtudAdapter(
     private val etudiants: MutableList<Etudiant>,
     private val onItemClicked: (Etudiant) -> Unit,
+    private val onDeleteClicked: (Etudiant) -> Unit,
+    private val onUpdateClicked: (Etudiant) -> Unit,
     private val onItemlongClicked: (Etudiant) -> Boolean = { false }
 ) : RecyclerView.Adapter<EtudAdapter.EtudiantViewHolder>() {
 
     inner class EtudiantViewHolder(private val binding: ItemEtudBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(etudiant: Etudiant) {
-            binding.tvId.text = "ID : ${etudiant.id}"
+            binding.tvId.text = "CIN : ${etudiant.id}"
             binding.tvMail.text = "Mail : ${etudiant.email}"
             binding.tvClasse.text = "Classe : ${etudiant.classe}"
+            binding.tvGenre.text = "Genre : ${etudiant.genre}"
 
-            // Avatar and background color based on gender
             if (etudiant.genre.equals("F", ignoreCase = true)) {
                 binding.ivAvatar.setImageResource(R.drawable.ic_girl)
                 binding.layoutContainer.setBackgroundColor(
@@ -32,6 +34,14 @@ class EtudAdapter(
                 binding.layoutContainer.setBackgroundColor(
                     ContextCompat.getColor(binding.root.context, R.color.boy_bg)
                 )
+            }
+
+            binding.btnDelete.setOnClickListener {
+                onDeleteClicked(etudiant)
+            }
+
+            binding.btnUpdate.setOnClickListener {
+                onUpdateClicked(etudiant)
             }
 
             binding.root.setOnClickListener {
